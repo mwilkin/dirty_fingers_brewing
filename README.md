@@ -25,6 +25,7 @@
 | EditKegComponent | Allows us to edit a keg's properties | KegListComponent |
 | EditKegComponent | Allows us to edit a keg's properties | KegListComponent |
 | KegComponent | Displays a single keg | KegListComponent |
+| Keg | model class definition | not a component |
 
 ## Description
 
