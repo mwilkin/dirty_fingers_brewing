@@ -11,13 +11,30 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var AppComponent, Keg;
+    var KegListComponent, AppComponent, Keg;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
+            KegListComponent = (function () {
+                function KegListComponent() {
+                }
+                KegListComponent.prototype.kegClicked = function (clickedKeg) {
+                    console.log(clickedKeg);
+                };
+                KegListComponent = __decorate([
+                    core_1.Component({
+                        selector: 'keg-list',
+                        inputs: ['kegList'],
+                        template: "\n  <h3 *ngFor=\"#currentKeg of kegList\" (click)=\"kegClicked(currentKeg)\">\n    {{ currentKeg.name }}\n  </h3>\n  "
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], KegListComponent);
+                return KegListComponent;
+            }());
+            exports_1("KegListComponent", KegListComponent);
             AppComponent = (function () {
                 function AppComponent() {
                     this.kegs = [
@@ -33,7 +50,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <div class=\"container\">\n      <h1>Dirty Fingers Brewing</h1>\n      <h3 *ngFor=\"#keg of kegs\" (click)=\"kegWasSelected(keg)\">\n        {{ keg.name }}\n      </h3>\n    </div>\n  "
+                        template: "\n    <div class=\"container\">\n      <h1>Dirty Fingers Brewing</h1>\n      <keg-list [kegList]=\"kegs\"></keg-list>\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
