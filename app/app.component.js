@@ -27,10 +27,13 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         new Keg("Saddle Sour", 3)
                     ];
                 }
+                AppComponent.prototype.kegWasSelected = function (clickedKeg) {
+                    console.log(clickedKeg);
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n    <div class=\"container\">\n      <h1>Dirty Fingers Brewing</h1>\n      <h3 *ngFor=\"#keg of kegs\">{{ keg.name }}</h3>\n    </div>\n  "
+                        template: "\n    <div class=\"container\">\n      <h1>Dirty Fingers Brewing</h1>\n      <h3 *ngFor=\"#keg of kegs\" (click)=\"kegWasSelected(keg)\">\n        {{ keg.name }}\n      </h3>\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
