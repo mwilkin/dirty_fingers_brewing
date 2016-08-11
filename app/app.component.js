@@ -20,14 +20,17 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             KegListComponent = (function () {
                 function KegListComponent() {
+                    this.onKegSelect = new core_1.EventEmitter();
                 }
                 KegListComponent.prototype.kegClicked = function (clickedKeg) {
-                    console.log(clickedKeg);
+                    console.log(clickedKeg, "child");
+                    this.onKegSelect.emit(clickedKeg);
                 };
                 KegListComponent = __decorate([
                     core_1.Component({
                         selector: 'keg-list',
                         inputs: ['kegList'],
+                        outputs: ['onKegSelect'],
                         template: "\n  <h3 *ngFor=\"#currentKeg of kegList\" (click)=\"kegClicked(currentKeg)\">\n    {{ currentKeg.name }}\n  </h3>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
@@ -41,17 +44,18 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         new Keg("Chainring Ale", 0),
                         new Keg("Breakline IPA", 1),
                         new Keg("Handle Bar Stout", 2),
-                        new Keg("Saddle Sour", 3)
+                        new Keg("Saddle Sour", 3),
+                        new Keg("Shaddow DOM Porter", 3)
                     ];
                 }
                 AppComponent.prototype.kegWasSelected = function (clickedKeg) {
-                    console.log(clickedKeg);
+                    console.log(clickedKeg, "parent");
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
                         directives: [KegListComponent],
-                        template: "\n    <div class=\"container\">\n      <h1>Dirty Fingers Brewing</h1>\n      <keg-list [kegList]=\"kegs\"></keg-list>\n    </div>\n  "
+                        template: "\n    <div class=\"container\">\n      <h1>Purple Stain Brewing</h1>\n      <keg-list\n        [kegList]=\"kegs\"\n        (onKegSelect)=\"kegWasSelected($event)\">\n      </keg-list>\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
