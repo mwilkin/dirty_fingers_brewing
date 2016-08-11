@@ -31,7 +31,7 @@ System.register(['angular2/core', './keg-list.component', './keg.model'], functi
                         new keg_model_1.Keg("Breakline IPA", 1),
                         new keg_model_1.Keg("Handle Bar Stout", 2),
                         new keg_model_1.Keg("Saddle Sour", 3),
-                        new keg_model_1.Keg("Shaddow DOM Porter", 4)
+                        new keg_model_1.Keg("Shadow DOM Porter", 4)
                     ];
                 }
                 AppComponent.prototype.kegWasSelected = function (clickedKeg) {

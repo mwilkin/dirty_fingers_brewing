@@ -23,7 +23,7 @@ export class AppComponent {
       new Keg("Breakline IPA", 1),
       new Keg("Handle Bar Stout", 2),
       new Keg("Saddle Sour", 3),
-      new Keg("Shaddow DOM Porter", 4)
+      new Keg("Shadow DOM Porter", 4)
     ];
   }
   kegWasSelected(clickedKeg: Keg): void {
