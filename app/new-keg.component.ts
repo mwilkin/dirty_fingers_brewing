@@ -7,7 +7,7 @@ import { Keg } from './keg.model';
   template:`
   <div class="keg-form">
     <h3>Create Keg: </h3>
-    <input placeholder="Name" class="col-sm-8 input-lg" #newName>
+    <input placeholder="Name" class="col-sm-11 input-lg" #newName>
     <button (click)="addKeg(newName)" class="btn-success btn-lg add-button">Add</button>
   </div>
   `
