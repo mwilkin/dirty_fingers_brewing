@@ -13,5 +13,8 @@
   ],
   "dependencies": {
     "bootstrap": "^3.3.6"
-  }
+  },
+  "authors": [
+    "Matt Wilkin <mwilkin22@gmail.com>"
+  ]
 }
