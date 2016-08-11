@@ -6,6 +6,8 @@ import { Keg } from './keg.model';
   inputs: ['keg'],
   template: `
     <h3>{{ keg.name }}</h3>
+    <h3>{{ keg.pints }}</h3>
+
   `
 })
 export class KegComponent {
