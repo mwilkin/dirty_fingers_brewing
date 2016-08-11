@@ -11,19 +11,34 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var KegListComponent, AppComponent, Keg;
+    var KegComponent, KegListComponent, AppComponent, Keg;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
+            KegComponent = (function () {
+                function KegComponent() {
+                }
+                KegComponent = __decorate([
+                    core_1.Component({
+                        selector: 'keg-display',
+                        inputs: ['keg'],
+                        template: "\n    <h3>\n      {{ keg.name }}\n    </h3>\n  "
+                    }), 
+                    __metadata('design:paramtypes', [])
+                ], KegComponent);
+                return KegComponent;
+            }());
+            exports_1("KegComponent", KegComponent);
             KegListComponent = (function () {
                 function KegListComponent() {
                     this.onKegSelect = new core_1.EventEmitter();
                 }
                 KegListComponent.prototype.kegClicked = function (clickedKeg) {
                     console.log(clickedKeg, "child");
+                    this.selectedKeg = clickedKeg;
                     this.onKegSelect.emit(clickedKeg);
                 };
                 KegListComponent = __decorate([
@@ -31,7 +46,8 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         selector: 'keg-list',
                         inputs: ['kegList'],
                         outputs: ['onKegSelect'],
-                        template: "\n  <h3 *ngFor=\"#currentKeg of kegList\" (click)=\"kegClicked(currentKeg)\">\n    {{ currentKeg.name }}\n  </h3>\n  "
+                        directives: [KegComponent],
+                        template: "\n  <keg-display *ngFor=\"#currentKeg of kegList\"\n    (click)=\"kegClicked(currentKeg)\"\n    [class.selected]=\"currentKeg === selectedKeg\"\n    [keg]=\"currentKeg\">\n  </keg-display>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], KegListComponent);
@@ -45,7 +61,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         new Keg("Breakline IPA", 1),
                         new Keg("Handle Bar Stout", 2),
                         new Keg("Saddle Sour", 3),
-                        new Keg("Shaddow DOM Porter", 3)
+                        new Keg("Shaddow DOM Porter", 4)
                     ];
                 }
                 AppComponent.prototype.kegWasSelected = function (clickedKeg) {
@@ -55,7 +71,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     core_1.Component({
                         selector: 'my-app',
                         directives: [KegListComponent],
-                        template: "\n    <div class=\"container\">\n      <h1>Purple Stain Brewing</h1>\n      <keg-list\n        [kegList]=\"kegs\"\n        (onKegSelect)=\"kegWasSelected($event)\">\n      </keg-list>\n    </div>\n  "
+                        template: "\n    <div class=\"container\">\n      <h1>Bent Spoke Brewing</h1>\n      <keg-list\n        [kegList]=\"kegs\"\n        (onKegSelect)=\"kegWasSelected($event)\">\n      </keg-list>\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
