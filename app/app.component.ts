@@ -18,6 +18,7 @@ console.log(clickedKeg);
 
 @Component({
   selector: 'my-app',
+  directives: [KegListComponent],
   template: `
     <div class="container">
       <h1>Dirty Fingers Brewing</h1>

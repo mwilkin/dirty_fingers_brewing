@@ -50,6 +50,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
+                        directives: [KegListComponent],
                         template: "\n    <div class=\"container\">\n      <h1>Dirty Fingers Brewing</h1>\n      <keg-list [kegList]=\"kegs\"></keg-list>\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
